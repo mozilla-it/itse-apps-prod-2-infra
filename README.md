@@ -1,2 +1,2 @@
-# itse-apps-infra-1-infra
-Prometheus aggregator repo for GCP
+# itse-apps-prod-2-infra
+GKE Prod infra

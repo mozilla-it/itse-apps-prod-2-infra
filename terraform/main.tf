@@ -6,13 +6,13 @@ provider "google-beta" {
 terraform {
   backend "gcs" {
     bucket = "itse-state-798274192702"
-    prefix = "terraform/itse-apps-admin-1-infra"
+    prefix = "terraform/itse-apps-prod-2-infra"
   }
 }
 
 locals {
   project_id   = "mozilla-it-service-engineering"
-  cluster_name = "itse-apps-admin-1"
+  cluster_name = "itse-apps-prod-2"
 
   cluster_features = {
     "prometheus" = true
@@ -22,7 +22,7 @@ locals {
 module "gke" {
   source           = "github.com/mozilla-it/terraform-modules//gcp/gke?ref=master"
   costcenter       = "1410"
-  environment      = "admin"
+  environment      = "prod"
   project_id       = local.project_id
   name             = local.cluster_name
   region           = var.region
