@@ -1,2 +1,2 @@
 # itse-apps-infra-1-infra
-Prometheus aggregator repo
+Prometheus aggregator repo for GCP
