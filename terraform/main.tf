@@ -15,7 +15,8 @@ locals {
   cluster_name = "itse-apps-prod-2"
 
   cluster_features = {
-    "prometheus" = true
+    "prometheus"       = true
+    "external_secrets" = true
   }
 
   node_pools = [
