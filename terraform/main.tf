@@ -15,8 +15,15 @@ locals {
   cluster_name = "itse-apps-prod-2"
 
   cluster_features = {
-    "prometheus"       = true
-    "external_secrets" = true
+    "prometheus"         = true
+    "external_secrets"   = true
+    "flux"               = true
+    "flux_helm_operator" = true
+  }
+
+  flux_settings = {
+    "git.url"  = "git@github.com:mozilla-it/itse-apps-prod-2-infra"
+    "git.path" = "k8s"
   }
 
   node_pools = [
@@ -46,5 +53,6 @@ module "gke" {
   subnetwork       = data.terraform_remote_state.vpc.outputs.subnets_names_map[var.region]
   cluster_features = local.cluster_features
   node_pools       = local.node_pools
+  flux_settings    = local.flux_settings
 }
 
