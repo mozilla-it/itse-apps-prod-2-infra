@@ -22,8 +22,9 @@ locals {
   }
 
   flux_settings = {
-    "git.url"  = "git@github.com:mozilla-it/itse-apps-prod-2-infra"
-    "git.path" = "k8s"
+    "git.url"    = "git@github.com:mozilla-it/itse-apps-prod-2-infra"
+    "git.path"   = "k8s"
+    "git.branch" = "main"
   }
 
   node_pools = [
