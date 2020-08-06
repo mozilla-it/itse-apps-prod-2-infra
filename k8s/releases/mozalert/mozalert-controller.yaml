@@ -13,6 +13,7 @@ spec:
     git: https://github.com/mozilla-it/helm-charts
     ref: main
     path: charts/mozalert-controller
+    version: 0.3.0
   values:
     image:
       repository: gcr.io/mozilla-it-service-engineering/github.com/mozilla-it/mozalert
