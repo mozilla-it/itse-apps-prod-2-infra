@@ -1,0 +1,20 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: mozalert-controller
+  namespace: mozalert
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: glob:main-*
+spec:
+  releaseName: mozalert-controller
+  chart:
+    git: https://github.com/mozilla-it/helm-charts
+    ref: main
+    path: charts/mozalert-controller
+  values:
+    image:
+      repository: gcr.io/mozilla-it-service-engineering/github.com/mozilla-it/mozalert
+      tag: main-99995bb14190cd69d32dc9ab04a17f707abdcbdb
+    secretRef: mozalert-secrets
