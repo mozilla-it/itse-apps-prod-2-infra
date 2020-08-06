@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: mozalert-controller
-  namespace: mozalert
+  namespace: mozalert-prod
   annotations:
     fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: glob:main-*
