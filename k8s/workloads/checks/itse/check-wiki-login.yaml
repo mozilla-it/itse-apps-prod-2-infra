@@ -1,0 +1,53 @@
+---
+# define intervals and escalations
+# in your Check resource
+apiVersion: "crd.k8s.afrank.local/v1"
+kind: Check
+metadata:
+  name: check-wiki-login
+  namespace: mozalert-prod
+  labels:
+    team: itse
+    type: mozlenium
+spec:
+  check_interval: 5m
+  retry_interval: 3m
+  notification_interval: 15m
+  max_attempts: 3
+  image: afrank/mozlenium
+  secret_ref: mozlenium-wiki-secrets
+  check_cm: check-wiki-login-cm
+  escalations:
+  - type: slack
+    env_args:
+      webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
+      channel: "SLACK_DEFAULT_CHANNEL"
+
+
+---
+apiVersion: v1
+data:
+  check-wiki.js: |+
+    //wiki.mozilla.org - scripted browser
+
+    $browser.get('https://wiki.mozilla.org/index.php?title=Special:UserLogin&returnto=Main+Page').then(function () {
+      return $browser.findElement($driver.By.xpath('//*[@id="wpName1"]')).sendKeys($secure.WIKI_USER);
+    }).then(function (){
+      return $browser.findElement($driver.By.xpath('//*[@id="wpPassword1"]')).sendKeys($secure.WIKI_PASSWORD);
+    }).then(function (){
+      return $browser.findElement($driver.By.xpath('//*[@id="wpLoginAttempt"]')).click();
+    }).then(function (){
+      return $browser.waitForAndFindElement($driver.By.xpath('//*[@id="p-logo"]/a')).then(function () {
+        console.log('Logged in to wiki successfully');
+      }).then(function () {
+        return $browser.get('https://wiki.mozilla.org/WeeklyUpdates').then(function() {
+          return $browser.waitForAndFindElement($driver.By.xpath('//*[@id="firstHeading"]')).then(function (){
+            console.log('Found WeeklyUpdates Page.')
+          });
+        });
+      });
+    });
+kind: ConfigMap
+metadata:
+  name: check-wiki-login-cm
+  namespace: mozalert-prod
