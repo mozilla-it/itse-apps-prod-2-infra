@@ -17,5 +17,5 @@ spec:
   values:
     image:
       repository: gcr.io/mozilla-it-service-engineering/github.com/mozilla-it/mozalert
-      tag: main-99995bb14190cd69d32dc9ab04a17f707abdcbdb
+      tag: main-e39ae2202627b3ab62fe590a31af960a8012671e
     secretRef: mozalert-secrets
