@@ -9,6 +9,7 @@ metadata:
   labels:
     team: itse
     type: pinger
+    purpose: cluster-health
 spec:
   check_interval: 3m
   retry_interval: 1m
