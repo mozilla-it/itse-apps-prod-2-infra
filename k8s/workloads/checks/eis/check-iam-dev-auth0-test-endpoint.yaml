@@ -1,0 +1,66 @@
+---
+# define intervals and escalations
+# in your Check resource
+apiVersion: "crd.k8s.afrank.local/v1"
+kind: Check
+metadata:
+  name: check-iam-dev-auth0-test-endpoint
+  namespace: mozalert-prod
+  labels:
+    team: eis
+    type: mozlenium
+spec:
+  check_interval: 5m
+  retry_interval: 3m
+  notification_interval: 15m
+  max_attempts: 3
+  escalations:
+  - type: slack
+    env_args:
+      webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
+      channel: "SLACK_DEFAULT_CHANNEL"
+  image: afrank/mozlenium
+  check_cm: check-iam-dev-auth0-test-endpoint-cm
+
+---
+# here is the check itself, stored in a configmap
+# this block was generated with 
+# k create configmap check-test-1-cm --from-file=./check.js
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: check-iam-dev-auth0-test-endpoint-cm
+  namespace: mozalert-prod
+data:
+  check.js: |+
+    //Import the `assert` module to validate results.
+    var assert = require('assert');
+    var $http = require('request');
+
+    var options = {
+        //Define endpoint URL.
+        url: "https://auth-dev.mozilla.auth0.com/testall"
+    };
+
+    $http.get(options, function(error, response, body) {
+        console.log(response.statusCode + " status code")
+        console.log("page contents: "+ response.body)
+    
+    
+        assert.ok(response.statusCode == 200, 'Expected 200 OK response');  
+        assert.ok(body === "OK", 'NOK');
+    });
+
+    var options = {
+        //Define endpoint URL.
+        url: "https://auth-dev.mozilla.auth0.com/test"
+    };
+
+    $http.get(options, function(error, response, body) {
+        console.log(response.statusCode + " status code")
+        console.log("page contents: "+ response.body)
+    
+    
+        assert.ok(response.statusCode == 200, 'Expected 200 OK response');  
+    });
+
