@@ -51,7 +51,7 @@ data:
       return $browser.waitForAndFindElement($driver.By.id("support-search-masthead"));
     }).then(function(){
       $browser.findElement($driver.By.css("#support-search-masthead> input:nth-child(1)")).sendKeys(searchString).then(function(){
-          return $browser.waitForAndFindElement($driver.By.className("sumo-card-heading search-results-heading mb-0")).then(function(element){
+          return $browser.waitForAndFindElement($driver.By.className("sumo-card-heading search-results-heading mb-0"), 10000).then(function(element){
               return element.getText().then(function(string){
                 console.log("Found string: "+string+"\n");
                 var match = string.match(/\d+/);
