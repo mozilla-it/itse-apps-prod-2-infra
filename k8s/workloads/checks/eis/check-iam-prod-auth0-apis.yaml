@@ -14,11 +14,6 @@ spec:
   retry_interval: 3m
   notification_interval: 15m
   max_attempts: 3
-  escalations:
-  - type: slack
-    env_args:
-      webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
-      channel: "SLACK_DEFAULT_CHANNEL"
   image: afrank/mozlenium
   check_cm: check-iam-prod-auth0-apis-cm
 
