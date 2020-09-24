@@ -17,8 +17,3 @@ spec:
   max_attempts: 3
   image: afrank/pinger
   check_url: https://prod-tp.sumo.mozit.cloud/
-  escalations:
-  - type: slack
-    env_args:
-      webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
-      channel: "SLACK_DEFAULT_CHANNEL"
