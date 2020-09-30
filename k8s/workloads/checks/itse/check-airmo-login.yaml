@@ -33,7 +33,7 @@ data:
 
     $browser.get('https://air.mozilla.org/').then(function(){
       // Check the H1 title matches expected output
-      return $browser.waitForAndFindElement($driver.By.css('h1'),1000).then(function(element){
+      return $browser.waitForAndFindElement($driver.By.xpath("//div[@id='newestList']/h1[contains(@class, 'header')]"),1000).then(function(element){
         return element.getText().then(function(text){
           assert.equal('Recent Events', text, 'Page H1 title did not match "' + text + '"');
         });
