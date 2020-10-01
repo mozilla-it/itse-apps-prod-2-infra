@@ -22,6 +22,8 @@ spec:
   image: afrank/mozlenium
   secret_ref: mozlenium-shared-secrets
   check_cm: check-iam-dev-sso-login-cm
+  references:
+    source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/eis/check-iam-dev-sso-login.yaml"
 
 ---
 # here is the check itself, stored in a configmap

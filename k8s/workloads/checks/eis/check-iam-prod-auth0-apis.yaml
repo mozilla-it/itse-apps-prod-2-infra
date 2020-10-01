@@ -16,6 +16,8 @@ spec:
   max_attempts: 3
   image: afrank/mozlenium
   check_cm: check-iam-prod-auth0-apis-cm
+  references:
+    source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/eis/check-iam-prod-auth0-apis.yaml"
 
 ---
 # here is the check itself, stored in a configmap
