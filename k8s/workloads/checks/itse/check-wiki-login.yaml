@@ -22,7 +22,8 @@ spec:
     env_args:
       webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
       channel: "SLACK_DEFAULT_CHANNEL"
-
+  references:
+    source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/itse/check-wiki-login.yaml"
 
 ---
 apiVersion: v1

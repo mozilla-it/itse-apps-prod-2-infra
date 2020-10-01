@@ -22,7 +22,8 @@ spec:
   image: afrank/mozlenium
   args: [ "chrome" ]
   check_cm: check-test-login-cm
-
+  references:
+    source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/itse/check-test-login.yaml"
 ---
 # define intervals and escalations
 # in your Check resource

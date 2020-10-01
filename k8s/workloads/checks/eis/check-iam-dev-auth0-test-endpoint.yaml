@@ -21,6 +21,8 @@ spec:
       channel: "SLACK_DEFAULT_CHANNEL"
   image: afrank/mozlenium
   check_cm: check-iam-dev-auth0-test-endpoint-cm
+  references:
+    source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/eis/check-iam-dev-auth0-test-endpoint.yaml"
 
 ---
 # here is the check itself, stored in a configmap
