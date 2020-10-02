@@ -16,7 +16,7 @@ spec:
   notification_interval: 5m
   max_attempts: 3
   image: afrank/pinger
-  check_url: https://prod.mozilla-redirects.xyz/version
+  check_url: https://prod.refractr.mozit.cloud/version
   escalations:
   - type: slack
     env_args:
