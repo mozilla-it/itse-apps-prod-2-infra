@@ -22,8 +22,8 @@ spec:
       webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
       channel: "SLACK_DEFAULT_CHANNEL"
   - type: email
-      args:
-        email: mozalert@mozilla.pagerduty.com
+    args:
+      email: mozalert@mozilla.pagerduty.com
   references:
     source_code: "https://github.com/mozilla-it/itse-apps-prod-2-infra/blob/main/k8s/workloads/checks/mozmeao/check-firefox-armchair.yaml"
 

@@ -20,7 +20,7 @@ spec:
       webhook_url: "SLACK_DEFAULT_WEBHOOK_URL"
       channel: "SLACK_DEFAULT_CHANNEL"
   - type: email
-      args:
-        email: mozalert@mozilla.pagerduty.com
+    args:
+      email: mozalert@mozilla.pagerduty.com
   image: afrank/pinger
   check_url: https://www.firefox.com
