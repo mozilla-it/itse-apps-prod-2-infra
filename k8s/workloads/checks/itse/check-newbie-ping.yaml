@@ -11,10 +11,10 @@ metadata:
     team: itse
     type: pinger
 spec:
-  check_interval: 3m
-  retry_interval: 1m
+  check_interval: 5m
+  retry_interval: 3m
   notification_interval: 5m
-  max_attempts: 3
+  max_attempts: 5
   image: afrank/pinger
   check_url: https://newbie.mozilla-slack.app/
   escalations:
